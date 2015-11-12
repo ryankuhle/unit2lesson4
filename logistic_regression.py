@@ -1,5 +1,6 @@
 import pandas as pd
 import statsmodels.api as sm
+import math
 
 loansData = pd.read_csv('loansData_clean.csv')
 
@@ -15,10 +16,13 @@ logit = sm.Logit(loansData['IR_TF'], loansData[ind_vars])
 result = logit.fit()
 
 coeff = result.params
-print coeff
 
-def logistic_function(ficoscore, loanamount):
-    #p = #?
+def logistic_function(coef, FICO, AMT):
+    p = 1 / (1 + math.e ** -(coef['Intercept'] +
+                             coef['FICO.Score'] * FICO +
+                             coef['Amount.Requested'] * AMT))
     return p
 
-#logistic_function(750, 10000)
+
+p = logistic_function(coeff, 750, 10000)
+print p
