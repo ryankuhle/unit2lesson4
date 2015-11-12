@@ -8,7 +8,7 @@ for x in loansData['Interest.Rate']:
 
 loansData['Intercept'] = float(1.0)
 
-ind_vars = [loansData['Interest.Rate'], loansData['Amount.Requested'], loansData['FICO.Score'], loansData['Intercept']]
+ind_vars = ['Amount.Requested', 'FICO.Score', 'Intercept']
 
 #1 - Define the logistic regression model
 logit = sm.Logit(loansData['IR_TF'], ind_vars)
