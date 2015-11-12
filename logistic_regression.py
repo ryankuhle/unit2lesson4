@@ -6,4 +6,6 @@ loansData = pd.read_csv('loansData_clean.csv')
 for x in loansData['Interest.Rate']:
     loansData['IR_TF'] = (loansData['Interest.Rate'] >= 0.12).astype(int)
 
-#print loansData['IR_TF'][0:5]
+loansData['intercept'] = float(1.0)
+
+#print loansData['intercept'][0:5]
