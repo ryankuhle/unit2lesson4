@@ -10,8 +10,7 @@ loansData['Intercept'] = float(1.0)
 
 ind_vars = ['Amount.Requested', 'FICO.Score', 'Intercept']
 
-#1 - Define the logistic regression model
-logit = sm.Logit(loansData['IR_TF'], ind_vars)
+logit = sm.Logit(loansData['IR_TF'], loansData[ind_vars])
 
 #2 - Fit the model
 result = logit.fit()
