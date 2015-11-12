@@ -9,3 +9,19 @@ for x in loansData['Interest.Rate']:
 loansData['Intercept'] = float(1.0)
 
 ind_vars = [loansData['Interest.Rate'], loansData['Amount.Requested'], loansData['FICO.Score'], loansData['Intercept']]
+
+#1 - Define the logistic regression model
+logit = sm.Logit(loansData['IR_TF'], ind_vars)
+
+#2 - Fit the model
+result = logit.fit()
+
+#3 - Get coefficients from results
+coeff = result.params
+print coeff
+
+def logistic_function(ficoscore, loanamount):
+    #p = #?
+    return p
+
+#logistic_function(750, 10000)
